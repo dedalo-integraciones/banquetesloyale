@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush-50: #fff0f4;
+  --color-blush-100: #ffe2ea;
+  --color-blush-200: #fda7be;
+  --color-blush-300: #fb668e;
+  --color-blush-400: #fa4475;
+  --color-blush-500: #fa255e;
+  --color-blush-600: #d4194e;
+  --color-blush-700: #b84362;
+  --color-blush-800: #754451;
+  --color-blush-900: #33292c;
+  --color-cream: #fdf8f5;
+  --color-charcoal: #2e2528;
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Lato", sans-serif;
+
+  --animate-fade-up: fadeUp 0.8s ease forwards;
+  --animate-fade-in: fadeIn 1s ease forwards;
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .section-divider {
+    @apply w-16 h-px bg-blush-500 mx-auto my-6;
+  }
+
+  .btn-primary {
+    @apply inline-block px-8 py-3 bg-blush-500 border border-blush-500 text-white text-xs tracking-[0.25em] uppercase
+           hover:bg-transparent hover:text-blush-500 hover:border-blush-500 transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply inline-block px-8 py-3 border border-blush-700 text-blush-700 text-xs tracking-[0.25em] uppercase
+           hover:bg-blush-700 hover:text-white transition-all duration-300 cursor-pointer;
+  }
+
+  .parallax-section {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+/* Parallax hero */
+.hero-bg {
+  background-image: 
+    linear-gradient(to bottom, rgba(46, 37, 40, 0.55), rgba(46, 37, 40, 0.4)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80');
+  background-attachment: fixed;
+  background-position: center 30%;
+  background-size: cover;
+}
+
+/* Parallax quote section */
+.quote-bg {
+  background-image: 
+    url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1920&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Footer bg */
+.footer-bg {
+  background-image: 
+    url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1920&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Fade-up animation utility */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
